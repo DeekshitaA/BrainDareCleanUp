@@ -1,0 +1,59 @@
+<ion-view title="Dare on">
+  <ion-content>
+    <div class="well">
+      <ion-nav-buttons side="left">
+        <button class="button" ng-click="$ionicGoBack($event)"><i class="ion-arrow-left-c"></i> Back</button>
+      </ion-nav-buttons>
+
+      <form class="form-inline" name="dareForm" role="form" novalidate>
+        <div class="card">
+          <div class="item item-input-inset">
+            <div class="row">
+              <div class="col-25">
+                <i class="assertive ion-ios-heart"></i>
+              </div>
+              <div class="col-75">
+                <input type="text" class="form-control" ng-model="dareAdd.taskName" placeholder="Name of Task">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="item item-input-inset">
+            <textarea class="full_width" ng-model="dareAdd.taskDescr" placeholder="Describe why it is important..."></textarea>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="item item-input item-select">
+            <div class="input-label">
+              Complete By:
+            </div>
+            <button class="button-clear button-block button-balanced icon-right ion-android-calendar" ng-model="complete" ng-click="dareAdd.showDatePicker()">
+              {{complete | date:'dd MMMM yyyy'}}
+            </button>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="item item-input item-select">
+            <div class="input-label">
+              Remind Me Every:
+            </div>
+            <select ng-options="remind.name for remind in dareAdd.remindMeOptions track by remind.id" ng-model="dareAdd.remindSelected">
+            </select>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="item item-input-inset">
+
+            <button class="button button-block button-balanced" ui-sref="tab.dash" ng-click="dareAdd.addDare()">Add Me</button>
+
+          </div>
+        </div>
+      </form>
+    </div>
+  </ion-content>
+</ion-view>

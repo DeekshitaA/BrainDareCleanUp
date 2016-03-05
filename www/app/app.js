@@ -72,6 +72,16 @@ angular.module("brainDare",
         }
       })
 
+     .state('dare.add', {
+        url: '/list/add',
+        views: {
+          'dare-list': {
+            templateUrl: 'app/Dares/NewDare/dare-add.html',
+            controller: 'DareAddCtrl as dareAdd'
+          }
+        }
+      })
+
       .state('dare.account', {
         url: '/account',
         views: {

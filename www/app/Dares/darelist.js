@@ -46,7 +46,7 @@
       };
 
       this.addDare = function(){
-        $state.go('tab.dare');
+        $state.go('dare.add');
       };
 
       this.items = brainDareService.getItems();
