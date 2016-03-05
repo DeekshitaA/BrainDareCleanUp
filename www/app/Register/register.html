@@ -1,0 +1,33 @@
+<ion-view view-title="Get Started!">
+  <ion-content>
+    <!--<button class="button button-energized" ng-click="addImage()">-->
+    <!--Add image-->
+    <!--</button><br><br>-->
+    <!--<img ng-repeat="image in images" ng-src="{{urlForImage(image)}}" height="200px"/>-->
+
+    <form novalidate>
+
+      <div class="list">
+        <label class="item item-input item-floating-label">
+          <span class="input-label">Name</span>
+          <input type="text" placeholder="John Doe" ng-model="name">
+        </label>
+        <label class="item item-input item-floating-label">
+          <span class="input-label">Email</span>
+          <input type="text" placeholder="example@email.com" ng-model="email">
+        </label>
+        <label class="item item-input item-floating-label">
+          <span class="input-label">Password</span>
+          <input type="password" placeholder="Password" ng-model="pwd">
+        </label>
+      </div>
+      <div class="padding">
+        <button  class="button button-block button-positive" ng-click="register.addUser(email,pwd, name)">Create Greatness</button>
+      </div>
+
+    </form>
+
+  </ion-content>
+
+</ion-view>
+

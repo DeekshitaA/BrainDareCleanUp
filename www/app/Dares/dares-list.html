@@ -1,0 +1,48 @@
+<ion-view hide-nav-bar="true">
+  <ion-content class="expanded">
+
+    <!--Profile info-->
+    <div id="profile-bg"></div>
+    <div id="content">
+      <div id="profile-info">
+        <img id="profile-image" ng-src="{{authData.facebook.cachedUserProfile.picture.data.url}}">
+        <h3 id="profile-name">Welcome {{authData.facebook.displayName}}</h3>
+        <span id="profile-description">{{quote}}</span>
+      </div>
+    </div>
+
+    <div class="item item-body">
+
+      <!--Add Dare Button-->
+      <div class="list card balanced-bg">
+        <div class="item item-text-wrap">
+          <a class="item item-icon-left " ng-click="dareList.addDare()">
+            <i class="ion-android-add-circle"></i>
+            Add a Dare
+          </a>
+        </div>
+      </div>
+
+      <ion-list class="item card-item" show-delete="false" can-swipe="true" ng-repeat="card in dareList.items |filter:uid">
+        <ion-item href="#" class="daresList">
+          <div ui-sref="app.gallery" class="card stable-bg ink ink-dark">
+            <div class=" dare item-avatar item-text-wrap">
+              <span class="avatar"> <i class="assertive ion-ios-heart"></i></span>
+              <strong> {{card.taskName}} </strong>
+              <div class="card-footer">
+                <div class="pull-left">
+                  {{card.taskDescr}}
+                </div>
+              </div>
+            </div>
+          </div>
+          <ion-option-button class=" dare-side-icon button-light icon ion-heart"></ion-option-button>
+          <ion-option-button class="dare-side-icon button-assertive icon ion-trash-a" ng-click="dareList.removeItem(card)"></ion-option-button>
+        </ion-item>
+      </ion-list>
+   </div>
+  </ion-content>
+</ion-view>
+
+
+
