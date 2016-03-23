@@ -23,34 +23,44 @@ angular.module("brainDare",
               StatusBar.styleDefault();
             }
 
-        //window.plugin.notification.local.onadd = function (id, state, json) {
-        //  var notification = {
-        //    id: id,
-        //    state: state,
-        //    json: json
-        //  };
-        //  $timeout(function() {
-        //    $rootScope.$broadcast("$cordovaLocalNotification:added", notification);
-        //  });
-        //};
+        if(device.platform === "iOS") {
+          window.plugin.notification.local.promptForPermission();
+        }
+
+        window.plugin.notification.local.onadd = function (id, state, json) {
+          var notification = {
+            id: id,
+            state: state,
+            json: json
+          };
+          $timeout(function() {
+            $rootScope.$broadcast("$cordovaLocalNotification:added", notification);
+          });
+        };
   });
   })
 
   .config(function($stateProvider, $urlRouterProvider) {
+    //$ionicAppProvider
+    //$ionicAppProvider.identify({
+    //    app_id: 'b90389e8',
+    //    api_key: 'ad1b4c020a434289985ae0e41ce7034178893c4b93bd9ea4',
+    //    dev_push: true
+    //  });
+
 
     $stateProvider
 
       .state('login', {
         url: '/login',
         controller: 'loginCtrl as login',
-     //   controllerAs: 'login',
-        templateUrl: 'app/Login/login.html',
+        templateUrl: 'app/Login/login.html'
       })
 
       .state('register', {
         url: '/register',
-       // controller: 'registerCtrl as register',
-        templateUrl: 'app/Register/register.html',
+        controller: 'registerCtrl as register',
+        templateUrl: 'app/Register/register.html'
       })
 
       // setup an abstract state for the dare v  tabs directive
@@ -96,3 +106,5 @@ angular.module("brainDare",
     $urlRouterProvider.otherwise('/login');
 
   });
+
+

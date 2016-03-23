@@ -4,6 +4,9 @@
 angular.module('brainDare')
   .controller('AccountCtrl', function($scope, $state, Auth, $rootScope, quotes, $cordovaLocalNotification) {
 
+    $scope.$on("$cordovaLocalNotification:added", function(id, state, json) {
+      alert("Added a notification");
+    });
 
     quotes.getQuote().then(function(res) {
       console.log('res', res);
@@ -14,7 +17,9 @@ angular.module('brainDare')
 
       var alarmTime = new Date();
       alarmTime.setMinutes(alarmTime.getMinutes() + 1);
+
       var quote = $scope.quote;
+
       $cordovaLocalNotification.add({
         id: "1234",
         date: alarmTime,

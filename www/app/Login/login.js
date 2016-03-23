@@ -18,7 +18,12 @@
       }
 
       this.facebook = function() {
+
+       // this.emailLogin('dk@d.com', '123456');
+        console.log('HI');
+        //$state.go('dare.list');
         Auth.$authWithOAuthPopup("facebook").then(function(authData){
+         // console.log(cordova)
           $scope.isNewFBUser = true;
           console.log(authData);
           $state.go('dare.list');
